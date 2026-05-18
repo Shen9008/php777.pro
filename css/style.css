@@ -966,6 +966,12 @@ body.mobile-menu-open {
   transform: scale(1.02);
 }
 
+@media (max-width: 900px) {
+  .hero__bg img {
+    object-position: center center;
+  }
+}
+
 @media (min-width: 900px) {
   .hero__bg img {
     transform: none;
@@ -999,14 +1005,17 @@ body.mobile-menu-open {
   grid-template-columns: 1fr;
   align-items: center;
   justify-items: start;
-  padding: max(2rem, calc(var(--safe-top) + 0.5rem)) 0 max(2.5rem, var(--safe-bottom));
+  /* Vertical only — `.container` supplies horizontal padding (shorthand `padding: T 0 B` zeroed sides). */
+  padding-top: max(2rem, calc(var(--safe-top) + 0.5rem));
+  padding-bottom: max(2.5rem, var(--safe-bottom));
   min-width: 0;
   width: 100%;
 }
 
 @media (min-width: 769px) {
   .hero__inner {
-    padding: max(3.5rem, calc(var(--safe-top) + 1rem)) 0 max(4rem, var(--safe-bottom));
+    padding-top: max(3.5rem, calc(var(--safe-top) + 1rem));
+    padding-bottom: max(4rem, var(--safe-bottom));
   }
 }
 
@@ -1095,7 +1104,7 @@ body.mobile-menu-open {
   animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero__actions {
     justify-content: center;
     gap: 0.625rem;
@@ -1163,7 +1172,7 @@ body.mobile-menu-open {
   line-height: 1.3;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero:has(.hero__bg) {
     min-height: min(38rem, 92dvh);
     border-radius: 0 0 1rem 1rem;
@@ -1172,13 +1181,17 @@ body.mobile-menu-open {
   .hero__inner {
     grid-template-columns: 1fr;
     gap: 1rem;
-    padding: max(1.25rem, var(--safe-top)) 0 max(1.75rem, var(--safe-bottom));
+    padding-top: max(1.25rem, var(--safe-top));
+    padding-bottom: max(1.75rem, var(--safe-bottom));
     text-align: center;
     justify-items: center;
+    align-items: center;
   }
 
   .hero__content {
     max-width: 100%;
+    margin-inline: auto;
+    text-align: center;
     padding: clamp(1rem, 4vw, 1.35rem);
   }
 
@@ -1188,6 +1201,7 @@ body.mobile-menu-open {
 
   .hero__title {
     margin-bottom: 0.65rem;
+    text-align: center;
   }
 
   .hero__subtitle {
@@ -1195,11 +1209,13 @@ body.mobile-menu-open {
     margin-right: auto;
     max-width: 100%;
     margin-bottom: 1.1rem;
+    text-align: center;
   }
 
   .hero__actions {
     flex-direction: column;
     max-width: 100%;
+    align-self: center;
   }
 
   .hero__actions .btn {
@@ -1213,6 +1229,8 @@ body.mobile-menu-open {
     gap: 0.5rem;
     margin-top: 1rem;
     width: 100%;
+    max-width: 28rem;
+    margin-inline: auto;
   }
 
   .hero__stat {
@@ -4128,7 +4146,10 @@ a.blog-pagination__btn:hover {
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
-  padding: clamp(1.25rem, 4vw, 2rem);
+  /* Extra horizontal inset — copy sits in a narrow glass card on inner pages (About, Help, etc.). */
+  padding-block: clamp(1.35rem, 4vw, 2rem);
+  padding-left: max(clamp(1.45rem, 5.5vw, 2.5rem), var(--safe-left));
+  padding-right: max(clamp(1.45rem, 5.5vw, 2.5rem), var(--safe-right));
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(var(--bg-deep-rgb), 0.38);
@@ -4151,6 +4172,14 @@ a.blog-pagination__btn:hover {
   .page-hero--banner {
     min-height: clamp(19rem, 32vw, 26rem);
     padding: clamp(3rem, 5vw, 4.5rem) 0 clamp(3.25rem, 6vw, 4.75rem);
+  }
+}
+
+/* Banner hero: inset section edge-to-edge crop on tablet / mobile (glass card has its own padding). */
+@media (max-width: 900px) {
+  .page-hero--banner {
+    padding-left: max(clamp(1.15rem, 4.5vw, 1.85rem), var(--safe-left));
+    padding-right: max(clamp(1.15rem, 4.5vw, 1.85rem), var(--safe-right));
   }
 }
 
@@ -4926,7 +4955,8 @@ a.blog-pagination__btn:hover {
   }
 
   .hero:has(.hero__bg) .hero__inner {
-    padding: max(1.35rem, var(--safe-top)) 0 max(1.75rem, var(--safe-bottom));
+    padding-top: max(1.35rem, var(--safe-top));
+    padding-bottom: max(1.75rem, var(--safe-bottom));
   }
 
   .hero:has(.hero__bg) .hero__title {
@@ -4942,7 +4972,9 @@ a.blog-pagination__btn:hover {
   }
 
   .page-hero--banner .container {
-    padding: clamp(1rem, 3.5vw, 1.35rem);
+    padding-block: clamp(1.15rem, 3.5vw, 1.45rem);
+    padding-left: max(clamp(1.35rem, 6vw, 1.85rem), var(--safe-left));
+    padding-right: max(clamp(1.35rem, 6vw, 1.85rem), var(--safe-right));
   }
 
   .products-bento {
