@@ -1,0 +1,29 @@
+{
+  "name": "php777pro",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "sync": "node scripts/content-sync.js",
+    "sync:all": "node scripts/content-sync.js --all",
+    "sync:doctor": "node scripts/sync-doctor.js",
+    "backfill": "node scripts/backfill-internal-links.js",
+    "backfill:force": "node scripts/backfill-internal-links.js --force",
+    "audit:links": "node scripts/audit-internal-links.js",
+    "migrate:legacy-blog": "node scripts/migrate-legacy-blog-pages.js",
+    "patch:blog-hrefs": "node scripts/patch-blog-html-links.js",
+    "build:images": "node scripts/build-webp.mjs",
+    "deploy": "wrangler pages deploy . --project-name=php777pro",
+    "serve": "serve . --listen 5173"
+  },
+  "devDependencies": {
+    "dotenv": "^16.6.1",
+    "form-data": "^4.0.5",
+    "glob": "^11.0.3",
+    "serve": "^14.2.5",
+    "sharp": "^0.34.5",
+    "wrangler": "^3.114.15"
+  }
+}

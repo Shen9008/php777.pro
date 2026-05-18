@@ -1,0 +1,54 @@
+<header class="header">
+    <div class="header__inner container">
+        <a href="{{base}}index.html" class="logo" aria-label="PHP777.pro — Home">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__wordmark"><span class="logo__text">PHP777</span><span class="logo__badge">.pro</span></span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+            <div class="nav__track">
+                <ul class="nav__list nav__list--compact">
+                    <li><a href="{{base}}index.html" class="nav__link" data-nav="index">Home</a></li>
+                    <li><a href="{{base}}about-us.html" class="nav__link" data-nav="about-us">About</a></li>
+                    <li><a href="{{base}}blog/index.html" class="nav__link" data-nav="blog">Blog</a></li>
+                    <li><a href="{{base}}slots.html" class="nav__link" data-nav="slots">Slots</a></li>
+                    <li><a href="{{base}}live-casino.html" class="nav__link" data-nav="live-casino">Live Casino</a></li>
+                    <li><a href="{{base}}sportsbook.html" class="nav__link" data-nav="sportsbook">Sports</a></li>
+                    <li><a href="{{base}}responsible-gambling.html" class="nav__link" data-nav="responsible-gambling">Responsible Play</a></li>
+                    <li><a href="{{base}}help-center.html" class="nav__link nav__link--cta" data-nav="help-center">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"
+            type="button">
+            <svg class="icon icon--menu" width="24" height="24" aria-hidden="true"><use href="#icon-menu"/></svg>
+        </button>
+    </div>
+</header>
+<div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true"></div>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile menu" aria-hidden="true">
+    <div class="mobile-menu__header">
+        <a href="{{base}}index.html" class="logo logo--drawer" aria-label="PHP777.pro — Home">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__wordmark"><span class="logo__text">PHP777</span><span class="logo__badge">.pro</span></span>
+        </a>
+        <button type="button" class="mobile-menu__close" aria-label="Close menu">
+            <svg class="icon icon--close-drawer" width="22" height="22" aria-hidden="true"><use href="#icon-close"/></svg>
+        </button>
+    </div>
+    <ul class="mobile-menu__list">
+        <li><a href="{{base}}index.html" class="mobile-menu__link" data-nav="index">Home</a></li>
+        <li><a href="{{base}}about-us.html" class="mobile-menu__link" data-nav="about-us">About</a></li>
+        <li><a href="{{base}}blog/index.html" class="mobile-menu__link" data-nav="blog">Blog</a></li>
+        <li><a href="{{base}}slots.html" class="mobile-menu__link" data-nav="slots">Slots</a></li>
+        <li><a href="{{base}}live-casino.html" class="mobile-menu__link" data-nav="live-casino">Live Casino</a></li>
+        <li><a href="{{base}}sportsbook.html" class="mobile-menu__link" data-nav="sportsbook">Sports</a></li>
+        <li class="mobile-menu__item mobile-menu__item--featured">
+            <a href="{{base}}responsible-gambling.html" class="mobile-menu__link mobile-menu__link--featured"
+                data-nav="responsible-gambling">Responsible Play</a>
+        </li>
+        <li class="mobile-menu__item mobile-menu__item--cta">
+            <a href="{{base}}help-center.html" class="mobile-menu__link mobile-menu__link--cta"
+                data-nav="help-center">Contact</a>
+        </li>
+    </ul>
+</nav>
