@@ -1,6 +1,6 @@
 'use strict';
 
-const { getPostsSyncConfig, buildSamplePostsUrl } = require('./lib/fetch-posts.js');
+const { getPostsSyncConfig, buildSamplePostsUrl, assertStrictSiteFilter } = require('./lib/fetch-posts.js');
 
 const cfg = getPostsSyncConfig();
 
@@ -31,4 +31,11 @@ if (!cfg.siteDomain && !cfg.skipFilter) {
 
 if (issues.length) {
   console.log('Notes:\n  - ' + issues.join('\n  - ') + '\n');
+}
+
+try {
+  assertStrictSiteFilter();
+} catch (err) {
+  console.error('Strict site filter check failed:\n  ' + err.message + '\n');
+  process.exit(1);
 }

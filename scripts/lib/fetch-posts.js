@@ -130,8 +130,28 @@ async function fetchPosts(opts = {}) {
   return allPosts;
 }
 
+/**
+ * Fail fast in CI when site filter env is missing or disabled.
+ */
+function assertStrictSiteFilter() {
+  const required = /^1|true|yes$/i.test(String(process.env.SYNC_REQUIRE_SITE_FILTER || '').trim());
+  if (!required) return;
+
+  const cfg = getPostsSyncConfig();
+  if (!cfg.siteDomain) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER=1 but SITE_DOMAIN is empty');
+  }
+  if (cfg.skipFilter) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER=1 but SKIP_POSTS_SITE_FILTER is enabled');
+  }
+  if (!cfg.filterKey) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER=1 but POSTS_SITE_FILTER_KEY is empty');
+  }
+}
+
 module.exports = {
   fetchPosts,
   getPostsSyncConfig,
   buildSamplePostsUrl,
+  assertStrictSiteFilter,
 };

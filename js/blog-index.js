@@ -84,9 +84,14 @@
 
     function buildCard(post) {
         var slug = post.slug;
+        var href = '/blog/' + slug + '/';
 
         var art = document.createElement('article');
         art.className = 'blog-card';
+
+        var cardLink = document.createElement('a');
+        cardLink.className = 'blog-card__link';
+        cardLink.href = href;
 
         var imgWrap = document.createElement('div');
         imgWrap.className = 'blog-card__img';
@@ -121,9 +126,7 @@
 
         var h3 = document.createElement('h3');
         h3.className = 'blog-card__title';
-        var link = document.createElement('a');
-        link.href = '/blog/' + slug + '/';
-        link.textContent = post.title || slug;
+        h3.textContent = post.title || slug;
 
         var meta = document.createElement('p');
         meta.className = 'blog-card__meta';
@@ -135,12 +138,12 @@
         var excerpt = truncate(post.excerpt || '', 140);
         meta.textContent = excerpt ? (head ? head + ' \u2014 ' + excerpt : excerpt) : head;
 
-        h3.appendChild(link);
         body.appendChild(cat);
         body.appendChild(h3);
         body.appendChild(meta);
-        art.appendChild(imgWrap);
-        art.appendChild(body);
+        cardLink.appendChild(imgWrap);
+        cardLink.appendChild(body);
+        art.appendChild(cardLink);
         return art;
     }
 
@@ -270,9 +273,19 @@
             if (!Array.isArray(posts)) throw new Error('Invalid blog data');
 
             posts.sort(function (a, b) {
-                var da = (a.published_date || a.synced_at || '').slice(0, 10);
-                var db = (b.published_date || b.synced_at || '').slice(0, 10);
-                return db.localeCompare(da);
+                var pubB = new Date(b.published_date || 0).getTime();
+                var pubA = new Date(a.published_date || 0).getTime();
+                if (pubB !== pubA) return pubB - pubA;
+
+                var cmsB = new Date(b.cms_updated_at || 0).getTime();
+                var cmsA = new Date(a.cms_updated_at || 0).getTime();
+                if (cmsB !== cmsA) return cmsB - cmsA;
+
+                var syncB = new Date(b.synced_at || 0).getTime();
+                var syncA = new Date(a.synced_at || 0).getTime();
+                if (syncB !== syncA) return syncB - syncA;
+
+                return String(a.slug).localeCompare(String(b.slug));
             });
 
             validPosts = posts.filter(function (post) {

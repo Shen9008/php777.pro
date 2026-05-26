@@ -6,10 +6,19 @@
   'use strict';
 
   function sortBlogsLatestFirst(a, b) {
-    var tb = new Date(b.synced_at || b.published_date || 0).getTime();
-    var ta = new Date(a.synced_at || a.published_date || 0).getTime();
-    if (tb !== ta) return tb - ta;
-    return String(b.slug).localeCompare(String(a.slug));
+    var pubB = new Date(b.published_date || 0).getTime();
+    var pubA = new Date(a.published_date || 0).getTime();
+    if (pubB !== pubA) return pubB - pubA;
+
+    var cmsB = new Date(b.cms_updated_at || 0).getTime();
+    var cmsA = new Date(a.cms_updated_at || 0).getTime();
+    if (cmsB !== cmsA) return cmsB - cmsA;
+
+    var syncB = new Date(b.synced_at || 0).getTime();
+    var syncA = new Date(a.synced_at || 0).getTime();
+    if (syncB !== syncA) return syncB - syncA;
+
+    return String(a.slug).localeCompare(String(b.slug));
   }
 
   function escapeHtml(s) {
