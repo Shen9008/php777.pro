@@ -86,11 +86,11 @@ The API does **not** add same-site blog links. Local injection skips text alread
 
 | Field | Purpose |
 |-------|---------|
-| `cms_updated_at` | Strapi `updatedAt` — used to detect CMS changes; tiebreaker on blog index when `published_date` matches |
+| `cms_updated_at` | Strapi `updatedAt` — used to detect CMS changes |
 | `content_hash` | SHA-256 fingerprint of API `content` — detects body changes (e.g. new cross-site links) |
-| `synced_at` | When the static site last wrote this entry; tiebreaker on blog index after `published_date` / `cms_updated_at` |
+| `synced_at` | When the static site last wrote this entry; **primary sort** on blog index (newest sync first) |
 
-Blog index sort (`js/blog-loader.js`): **`published_date` newest first**, then `cms_updated_at`, then `synced_at`, then slug.
+Blog index sort (`js/blog-index.js`, `js/blog-article.js`, sync pipeline): **`synced_at` newest first** (falls back to `published_date` if missing), then slug.
 
 ---
 

@@ -25,21 +25,7 @@ function sortBlogsByLatestSyncFirst(a, b) {
   return String(b.slug).localeCompare(String(a.slug));
 }
 
-function sortBlogsForIndex(a, b) {
-  const pubB = new Date(b.published_date || 0).getTime();
-  const pubA = new Date(a.published_date || 0).getTime();
-  if (pubB !== pubA) return pubB - pubA;
-
-  const cmsB = new Date(b.cms_updated_at || 0).getTime();
-  const cmsA = new Date(a.cms_updated_at || 0).getTime();
-  if (cmsB !== cmsA) return cmsB - cmsA;
-
-  const syncB = new Date(b.synced_at || 0).getTime();
-  const syncA = new Date(a.synced_at || 0).getTime();
-  if (syncB !== syncA) return syncB - syncA;
-
-  return String(a.slug).localeCompare(String(b.slug));
-}
+const sortBlogsForIndex = sortBlogsByLatestSyncFirst;
 
 function parseArgs(argv) {
   const args = {
