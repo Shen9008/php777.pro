@@ -44,6 +44,12 @@
   </url>
   <!-- Blog Posts -->
   <url>
+    <loc>https://php777.pro/blog/the-clean-sheet-blueprint-betting-on-low-scoring-world-cup-matches/</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://php777.pro/blog/applying-xg-models-to-spot-mispriced-world-cup-lines/</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
