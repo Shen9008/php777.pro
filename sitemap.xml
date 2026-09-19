@@ -37,7 +37,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://php777.pro/blog/index.html</loc>
+    <loc>https://php777.pro/blog/</loc>
     <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -1249,6 +1249,12 @@
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://php777.pro/privacy.html</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://php777.pro/terms-conditions.html</loc>

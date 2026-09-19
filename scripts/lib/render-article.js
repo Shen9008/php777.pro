@@ -8,6 +8,7 @@ const { injectInternalLinks } = require('./inject-internal-links.js');
 const ROOT = path.resolve(__dirname, '../..');
 const TEMPLATE_PATH = path.join(ROOT, 'scripts/templates/article.template.html');
 const BLOG_DIR = path.join(ROOT, 'blog');
+const SITE = 'https://php777.pro';
 
 /**
  * Builds TOC HTML from toc_json.
@@ -133,7 +134,7 @@ function renderArticle(normalized, opts = {}) {
   const templatePath = opts.templatePath || TEMPLATE_PATH;
   let template = fs.readFileSync(templatePath, 'utf8');
 
-  const baseUrl = 'https://pgasiagames.com/blog/' + normalized.slug + '/';
+  const baseUrl = `${SITE}/blog/${normalized.slug}/`;
   const shareTitle = encodeURIComponent(normalized.title);
 
   const tocHtml = buildTocHtml(normalized.toc_json || []);
