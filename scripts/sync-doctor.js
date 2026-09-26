@@ -9,6 +9,9 @@ console.log('Posts sync  -  configuration (copy `scripts/` + env to reuse on oth
 console.log('  STRAPI_API_URL          ', cfg.base || '(unset)');
 console.log('  POSTS_COLLECTION        ', cfg.collection);
 console.log('  SITE_DOMAIN             ', cfg.siteDomain || '(unset)');
+if (cfg.siteDomain && cfg.siteDomain !== 'php777.pro') {
+  console.warn('\n  WARNING: SITE_DOMAIN is not php777.pro — blog canonicals may target the wrong host in GSC.\n');
+}
 console.log('  SKIP_POSTS_SITE_FILTER  ', cfg.skipFilter ? 'yes' : 'no');
 console.log(
   '  POSTS_SITE_FILTER_KEY   ',

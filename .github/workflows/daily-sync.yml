@@ -82,6 +82,9 @@ jobs:
       - name: Backfill internal links
         run: npm run backfill
 
+      - name: Validate SEO domain (php777.pro canonicals)
+        run: npm run validate:seo
+
       - name: Commit synced content
         run: |
           git config user.name "github-actions[bot]"

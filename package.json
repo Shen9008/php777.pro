@@ -19,6 +19,8 @@
     "patch:blog-hrefs": "node scripts/patch-blog-html-links.js",
     "build:images": "node scripts/build-webp.mjs",
     "deploy": "wrangler pages deploy . --project-name=php777pro",
+    "validate:seo": "node scripts/validate-seo-domain.js",
+    "indexnow": "node scripts/indexnow-submit.js",
     "serve": "serve . --listen 5173"
   },
   "devDependencies": {
