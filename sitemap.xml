@@ -44,6 +44,12 @@
   </url>
   <!-- Blog Posts -->
   <url>
+    <loc>https://php777.pro/blog/epl-match-tempo-explained-fast-passing-dynamics/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://php777.pro/blog/football-defensive-errors-guide-how-mistakes-can-influence-match-performance/</loc>
     <lastmod>2026-08-19</lastmod>
     <changefreq>monthly</changefreq>
